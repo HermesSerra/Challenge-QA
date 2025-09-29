@@ -114,7 +114,7 @@ Testes de Segurança Básicos: Tentativas de injeção de SQL e Script (XSS) par
 API de Cadastro de Usuário
 Segurança Crítica: Vulnerabilidade a Injeção de Script (XSS)
 
-![Vulnera](Evidencias%20dos%20testes/API1/Teste%20de%20segurança%20senha.png)
+![](Evidencias%20dos%20testes/API1/Teste%20de%20segurança%20senha.png)
 
 
 
