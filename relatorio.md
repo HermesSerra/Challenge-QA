@@ -28,15 +28,15 @@ Explique como os testes foram conduzidos (Tipos e Ferramentas)
 ---
 ### Casos de Teste - API de Cadastro de Usuário
 
-| ID | Cenário                    | Entrada                      | Resultado Esperado             | Resultado Obtido                                        | Status     |
-|:--:|:--------------------------:|:----------------------------:|:----------------------- ------:|:-------------------------------------------------------:|:----------:|
-| 01 | Cadastro com dados válidos | `email` e `senha` válidos    | Sucesso no cadastro (201)      | `{"success": true}`                                     | **Passou** |
-| 02 | E-mail já existente        | `email` repetido             | Erro de e-mail duplicado (409) | `{"success": false, "message": "Email already exists"}` | **Passou** |
-| 03 | E-mail em maiúsculas       | `email` em CAIXA ALTA        | Sucesso no cadastro (201)      | `{"success": true}`                                     | **Passou** |
-| 04 | **BUG** - E-mail vazio     | `email` como `""`            | Erro de campo obrigatório (400)| Permitiu o cadastro (201)                               | **Falhou** |
-| 05 | **BUG** - Senha vazia      | `password` como `""`         | Erro de campo obrigatório (400)| Permitiu o cadastro (201)                               | **Falhou** |
-| 06 | **BUG** - E-mail sem "@"   | `email` sem o "@"            | Erro de formato inválido (400) | Permitiu o cadastro (201)                               | **Falhou** |
-| 07 | **BUG** - XSS na senha     | `password` com `<script>`    | Erro de entrada inválida (400) | Permitiu o cadastro (201)                               | **Falhou** |
+| ID | Cenário                   | Entrada                  | Resultado Esperado             | Resultado Obtido                                       | Status     |
+|:--:|:-------------------------:|:------------------------:|:----------------------- ------:|:------------------------------------------------------:|:----------:|
+| 01 | Cadastro com dados válidos| `email` e `senha` válidos| Sucesso no cadastro (201)      | `{"success": true}`                                    | **Passou** |
+| 02 | E-mail já existente       | `email` repetido         | Erro de e-mail duplicado (409) | `{"success": false, "message": "Email already exists"}`| **Passou** |
+| 03 | E-mail em maiúsculas      | `email` em CAIXA ALTA    | Sucesso no cadastro (201)      | `{"success": true}`                                    | **Passou** |
+| 04 | **BUG** - E-mail vazio    | `email` como `""`        | Erro de campo obrigatório (400)| Permitiu o cadastro (201)                              | **Falhou** |
+| 05 | **BUG** - Senha vazia     | `password` como `""`     | Erro de campo obrigatório (400)| Permitiu o cadastro (201)                              | **Falhou** |
+| 06 | **BUG** - E-mail sem "@"  | `email` sem o "@"        | Erro de formato inválido (400) | Permitiu o cadastro (201)                              | **Falhou** |
+| 07 | **BUG** - XSS na senha    | `password` com `<script>`| Erro de entrada inválida (400) | Permitiu o cadastro (201)                              | **Falhou** |
 
 
 ---
