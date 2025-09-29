@@ -132,6 +132,7 @@ Descrição: O sistema permitiu o cadastro de usuários com os campos email e/ou
 Impacto: Crítico. Gera dados inconsistentes e inválidos no sistema, além de potenciais falhas de segurança.
 
 Validação de Dados: Falha na Validação de Formato de E-mail
+![Email errado](Evidencias%20dos%20testes/API1/emeil%20errado.png)
 
 Descrição: A API aceitou o cadastro de um e-mail sem o caractere "@" (ex: "hermes_https://www.google.com/search?q=tapahotmail.com"), tratando-o como um e-mail válido.
 
@@ -169,7 +170,7 @@ Descrição: No endpoint de juros compostos, ao receber um valor de time maior q
 
 Impacto: Médio. A alteração silenciosa dos dados do usuário torna a API pouco confiável.
 
-[Precisão/UX] Erro de Arredondamento e Mensagem de Erro Incorreta
+Precisão/UX: Erro de Arredondamento e Mensagem de Erro Incorreta
 
 Descrição: No cálculo de parcelamento para 1 única parcela, o saldo residual ficou negativo (-0.03), indicando um erro de precisão. Adicionalmente, ao receber uma taxa com vírgula, a API retornou uma mensagem de erro genérica ("Principal, rate, and installments are required") em vez de informar sobre o formato inválido do número.
 
@@ -182,19 +183,19 @@ Impacto: Baixo/Médio. Afeta a confiança nos cálculos e a experiência do dese
 
 A aplicação não possui uma maneira para o usuário recuperar o acesso à conta caso esqueça a senha. Recomenda-se a criação de um endpoint (ex: /api/user/forgot-password) que inicie um fluxo seguro de redefinição de senha, geralmente enviando um link com token de uso único para o e-mail cadastrado.
 
-[Segurança] Implementar Bloqueio de Conta por Tentativas de Login (Brute-Force Protection)
+Segurança: Implementar Bloqueio de Conta por Tentativas de Login (Brute-Force Protection)
 
 A API de Login, embora robusta, não possui proteção contra ataques de força bruta. Recomenda-se implementar uma política de bloqueio temporário de conta (ex: após 5 tentativas de senha incorreta) para aumentar a segurança.
 
-[Segurança] Implementar Política de Complexidade de Senha
+Segurança: Implementar Política de Complexidade de Senha
 
 A API de Cadastro emite um aviso de "senha fraca", mas ainda assim a aceita. Recomenda-se forçar uma política mínima de complexidade (ex: 8 caracteres, letras, números) para garantir que os usuários criem senhas mais seguras.
 
-[Robustez] Normalizar E-mails para Minúsculas no Cadastro
+Robustez: Normalizar E-mails para Minúsculas no Cadastro
 
 Para evitar contas duplicadas (usuario@email.com e USUARIO@email.com), sugere-se converter todos os e-mails para letras minúsculas antes de salvá-los no banco de dados.
 
-[UX] Padronizar e Melhorar as Mensagens de Erro
+UX: Padronizar e Melhorar as Mensagens de Erro
 
 As mensagens de erro da API poderiam ser mais claras e consistentes. Por exemplo, em vez de "campos são requeridos" quando o formato de um número está errado, a mensagem deveria ser específica, como "Formato inválido para o campo 'rate'". Isso melhora a experiência de quem utiliza a API.
 ## Desenvolvimento / Extras
