@@ -114,6 +114,10 @@ Testes de Segurança Básicos: Tentativas de injeção de SQL e Script (XSS) par
 API de Cadastro de Usuário
 Segurança Crítica: Vulnerabilidade a Injeção de Script (XSS)
 
+![Vulnera](Evidencias%20dos%20testes/API1/Teste%20de%20segurança%20senha.png)
+
+
+
 Descrição: A API permitiu o cadastro de um usuário com um payload de script (<script>alert('XSS Test');</script>) no campo de senha. Embora a senha não seja refletida na tela, armazenar scripts no banco de dados é uma falha de segurança grave que pode levar a ataques complexos.
 
 Impacto: Crítico. Compromete a integridade do banco de dados e abre portas para vulnerabilidades de segurança.
