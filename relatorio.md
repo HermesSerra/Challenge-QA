@@ -108,7 +108,7 @@ Testes de Segurança Básicos: Tentativas de injeção de SQL e Script (XSS) par
 | 02 | **BUG** - Cálculo com 1 parcela | `P:2000, r:1, i:1` | Saldo final deve ser 0          | Saldo final negativo (-0.03)     | **Falhou** |
 | 03 | **BUG** - Taxa decimal (vírgula)| `rate` como `"1,5"`| Erro de formato inválido (400)  | Erro 400 com mensagem incorreta  | **Falhou** |
 
-
+Todas as evidências dos testes executados estão armazenadas no diretório anexo, denominado "Evidencias dos testes".
 
 ## Falhas Encontradas
 API de Cadastro de Usuário
@@ -140,13 +140,9 @@ Impacto: Alto. Permite que dados inválidos sejam inseridos, impossibilitando a 
 Liste os bugs encontrados, com descrição clara:  
 
 ### API de Calculadora de Juros
-Lógica Crítica Fórmula de Juros Compostos Incorreta
-
-Descrição: O endpoint de juros compostos retorna valores que não correspondem ao cálculo financeiro correto. Todos os testes com valores padrão resultaram em totais e juros incorretos, indicando uma falha fundamental na lógica de cálculo.
-
-Impacto: Crítico. A funcionalidade principal do endpoint não é confiável e entrega resultados errados.
 
 Erro Fatal: Divisão por Zero Causa Erro 500
+![Divisão por zero causa erro 500](Evidencias%20dos%20testes/API3/Composto/Divisão%20por%20Zero%20Causa%20Erro%20500.png)
 
 Descrição: Ao enviar uma requisição de juros compostos com compounding_frequency igual a 0, a API quebra e retorna um 500 Internal Server Error ao invés de tratar a exceção e retornar um erro 400 (Bad Request).
 
@@ -175,6 +171,7 @@ Descrição: No endpoint de juros compostos, ao receber um valor de time maior q
 Impacto: Médio. A alteração silenciosa dos dados do usuário torna a API pouco confiável.
 
 Precisão/UX: Erro de Arredondamento e Mensagem de Erro Incorreta
+![Cálculo 1 mês](Evidencias%20dos%20testes/API3/Parcelado/calculo%201%20mes%20.png)
 
 Descrição: No cálculo de parcelamento para 1 única parcela, o saldo residual ficou negativo (-0.03), indicando um erro de precisão. Adicionalmente, ao receber uma taxa com vírgula, a API retornou uma mensagem de erro genérica ("Principal, rate, and installments are required") em vez de informar sobre o formato inválido do número.
 
