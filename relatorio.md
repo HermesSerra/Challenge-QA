@@ -153,18 +153,22 @@ Descrição: Ao enviar uma requisição de juros compostos com compounding_frequ
 Impacto: Crítico. Erros não tratados podem causar instabilidade na aplicação.
 
 Validação de Dados: Falha no Tratamento de Decimais com Vírgula
+![Bug juros simples 1,5](Evidencias%20dos%20testes/API3/juros%20simples/bug%20juros%20simples%201,5.png)
 
 Descrição: Os endpoints de juros simples e parcelamento não conseguem interpretar números decimais enviados com vírgula (ex: "1,5"). Em vez de converter o valor ou retornar um erro, a API ignora a parte decimal, levando a cálculos incorretos.
 
 Impacto: Alto. Impede o uso correto da API em localidades que usam a vírgula como separador decimal, como o Brasil.
 
 Validação de Dados: Permite Cálculo com Valores Negativos
+![Bug cálculo valor negativo](Evidencias%20dos%20testes/API3/Composto/bug%20calculo%20valor%20negativo%20.png)
 
 Descrição: O endpoint de juros compostos aceita e processa um principal com valor negativo, o que não faz sentido em um contexto financeiro. A API deveria validar e rejeitar essa entrada.
 
 Impacto: Médio. A falta de validação de regras de negócio pode gerar resultados inesperados.
 
-[Comportamento Inesperado] Manipulação de Input do Usuário
+Comportamento Inesperado Manipulação de Input do Usuário
+
+![Bug casos extremos](Evidencias%20dos%20testes/API3/Composto/bug%20Verificar%20tratamento%20de%20casos%20extremos%20não%20calcular%20acima%20de%2012%20meses%20.png)
 
 Descrição: No endpoint de juros compostos, ao receber um valor de time maior que 12 (ex: 13), a API alterou o valor internamente para 6.5 sem avisar, em vez de calcular corretamente ou retornar um erro.
 
