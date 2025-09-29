@@ -123,6 +123,9 @@ Descrição: A API permitiu o cadastro de um usuário com um payload de script (
 Impacto: Crítico. Compromete a integridade do banco de dados e abre portas para vulnerabilidades de segurança.
 
 Validação Crítica: Cadastro com Campos Vazios
+![Bug Email vazio](Evidencias%20dos%20testes/API1/Bug%20Email%20vazio%20.png)
+![Bug senha vazia](Evidencias%20dos%20testes/API1/Bug%20senha%20vazia%20.png)
+
 
 Descrição: O sistema permitiu o cadastro de usuários com os campos email e/ou password vazios.
 
