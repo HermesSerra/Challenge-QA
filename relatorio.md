@@ -42,16 +42,16 @@ Explique como os testes foram conduzidos (Tipos e Ferramentas)
 ---
 ### Casos de Teste - API de Login
 
-| ID | Cenário        | Entrada                   |    Resultado Esperado                | Resultado Obtido                                         | Status     |
-|:--:|:---------------------------------:|:-------------------------------------:|:----------------------------- ------:|:---------------------------------:|:----------:|
-| 01 | Login com credenciais válidas  | `email` e `senha` corretos| Sucesso no login (200)       | `{"success": true, "message": "Login successful"}`       | **Passou** |
-| 02 | Login com senha incorreta | `email` correto, `senha` errada  | Erro de senha incorreta (401)| `{"success": false, "message": "Password is incorrect"}` | **Passou** |
-| 03 | Login com e-mail não cadastrado| `email` inexistente | Erro de usuário não encontrado (404) | `{"success": false, "message": "User not found"}`        | **Passou** |
-| 04 | Login com campo de senha vazio | `email` correto, `senha` vazia| Erro de senha incorreta (401)|`{"success": false, "message": "Password is incorrect"}`| **Passou** |
-| 05 | E-mail (Case Insensitive)      | `email` em CAIXA ALTA| Sucesso no login (200)            | `{"success": true, "message": "Login successful"}`       | **Passou** |
-| 06 | Senha (Case Sensitive)         | `senha` em CAIXA ALTA | Erro de senha incorreta (401)     | `{"success": false, "message": "Password is incorrect"}` | **Passou** |
-| 07 | Segurança - Tentativa de XSS   | `senha` com `<script>` | Erro de senha incorreta (401)    | `{"success": false, "message": "Password is incorrect"}` | **Passou** |
-| 08 | Segurança  Force (Melhoria) | Múltiplas tentativas senha errada | Bloqueio de conta ou `rate limit`| A API continua respondendo normalmente (401)     | **Passou** |
+| ID | Cenário                     | Entrada                       |    Resultado Esperado        | Resultado Obtido                                         | Status     |
+|:--:|:---------------------------:|:-----------------------------:|:----------------------------:|:--------------------------------------------------------:|:----------:|
+| 01 | Login  credenciais válidas  | email e senha corretos        | Sucesso no login (200)       | `{"success": true, "message": "Login successful"}`       | **Passou** |
+| 02 | Login  senha incorreta      | email correto, senha errada   | Erro de senha incorreta (401)| `{"success": false, "message": "Password is incorrect"}` | **Passou** |
+| 03 | Login  e-mail não cadastrado| `email` inexistente           | usuário não encontrado (404) | `{"success": false, "message": "User not found"}`        | **Passou** |
+| 04 | Login  campo de senha vazio | `email` correto, `senha` vazia| Erro de senha incorreta (401)|`{"success": false, "message": "Password is incorrect"}`  | **Passou** |
+| 05 | E-mail (Case Insensitive)   | `email` em CAIXA ALTA         | Sucesso no login (200)       | `{"success": true, "message": "Login successful"}`       | **Passou** |
+| 06 | Senha (Case Sensitive)      | `senha` em CAIXA ALTA         | Erro de senha incorreta (401)| `{"success": false, "message": "Password is incorrect"}` | **Passou** |
+| 07 | Segurança - Tentativa de XSS| `senha` com `<script>`        | Erro de senha incorreta (401)| `{"success": false, "message": "Password is incorrect"}` | **Passou** |
+| 08 | Segurança  Force (Melhoria) |Muitas tentativas senha errada | Bloqueio de conta`rate limit`| A API continua respondendo normalmente (401)             | **Passou** |
 
 ### Casos de Teste - API de Calculadora de Juros
 
