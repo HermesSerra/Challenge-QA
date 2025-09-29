@@ -1,0 +1,57 @@
+services:
+  # MySQL Database
+  mysql:
+    build:
+      context: .
+      dockerfile: docker/mysql.Dockerfile
+    container_name: challenge_qa_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: challenge_qa
+      MYSQL_USER: qa_user
+      MYSQL_PASSWORD: qa_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./logs/mysql:/var/log/mysql
+    networks:
+      - challenge_qa_network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  # PHP Backend Application
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: challenge_qa_backend
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: challenge_qa
+      DB_USERNAME: qa_user
+      DB_PASSWORD: qa_password
+      APP_ENV: development
+      APP_DEBUG: true
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html/
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - challenge_qa_network
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  challenge_qa_network:
+    driver: bridge

@@ -1,0 +1,36 @@
+{
+    "name": "challenge-qa/api",
+    "description": "QA Challenge API with intentional bugs for testing",
+    "type": "project",
+    "require": {
+        "php": "^8.0",
+        "doctrine/migrations": "^3.9",
+        "monolog/monolog": "^3.0",
+        "slim/psr7": "^1.6",
+        "slim/slim": "^4.11",
+        "vlucas/phpdotenv": "^5.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ChallengeQA\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ChallengeQA\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "start": "php -S localhost:8000 -t public",
+        "test": "phpunit"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
